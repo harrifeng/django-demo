@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['10.19.19.20', 'localhost']
 # Application definition
 
 INSTALLED_APPS = [
+    'posts.apps.PostsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
