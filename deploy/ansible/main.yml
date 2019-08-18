@@ -7,14 +7,14 @@
        file:
          path: "/home/{{default_user}}/.config/systemd/user"
          state: directory
-     - name: Make the systemd configuration for emacs
+     - name: Make the systemd configuration for django-demo
        copy:
-         src: emacs.service
-         dest: "/home/{{default_user}}/.config/systemd/user/emacs.service"
+         src: django-demo.service
+         dest: "/home/{{default_user}}/.config/systemd/user/django-demo.service"
          force: yes
-     - name: Start emacs.service and enable on start on boot
+     - name: Start django-demo.service and enable on start on boot
        systemd:
-         name: emacs
+         name: django-demo
          scope: user
          state: started
          enabled: yes
