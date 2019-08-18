@@ -8,7 +8,7 @@
          path: "/home/{{default_user}}/.config/systemd/user"
          state: directory
      - name: Make the systemd configuration for django-demo
-       copy:
+       template:
          src: django-demo.service.j2
          dest: "/home/{{default_user}}/.config/systemd/user/django-demo.service"
          force: yes
