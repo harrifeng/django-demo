@@ -9,7 +9,7 @@
          state: directory
      - name: Make the systemd configuration for django-demo
        copy:
-         src: django-demo.service
+         src: django-demo.service.j2
          dest: "/home/{{default_user}}/.config/systemd/user/django-demo.service"
          force: yes
      - name: Start django-demo.service and enable on start on boot
