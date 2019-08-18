@@ -1,0 +1,21 @@
+---
+ - hosts: "{{ variable_host | default('hostname') }}"
+   become: yes
+   become_user: "{{ default_user }}"
+   tasks:
+     - name: Make sure the directory exist
+       file:
+         path: "/home/{{default_user}}/.config/systemd/user"
+         state: directory
+     - name: Make the systemd configuration for emacs
+       copy:
+         src: emacs.service
+         dest: "/home/{{default_user}}/.config/systemd/user/emacs.service"
+         force: yes
+     - name: Start emacs.service and enable on start on boot
+       systemd:
+         name: emacs
+         scope: user
+         state: started
+         enabled: yes
+         daemon_reload: yes
